@@ -1,39 +1,59 @@
-A backend URL shortening service built with Spring Boot. 
-Converts long URLs into short, manageable links and redirects users seamlessly. 
-Includes expiration handling and Redis caching for high performance.
+# 💬 Real-Time Chat Application
 
-## Feature
+A simple, secure real-time chat application build with Spring Boot,
+WebSocket(STOMP), and MySQL. This project showcases real-time messaging,
+persistent chat history, read receipts, and chat room management.
 
-- Shortens any valid URL
-- Optional expiration time for each shortened URL
-- Fast retrieval using Redis caching
-- Redirects from short URL to original URL
-- API testing enabled via Swagger UI
-- Docker support for containerized deployment
+## 🚀 Features
 
-## Tech Stack
-- Java 17
-- Spring Boot 3.4.3
-- Spring Web, JPA, Validation
-- MYSQL
-- Redis (caching layer)
-- springdoc-openapi (Swagger UI)
-- Docker
-- Junit & Mockito 
+- User Registration & Login: JWT-based authentication with Spring Security.
+- Protected Endpoints: Secure REST and WebSocket channels so only authenticated users can participate.
+- Chat Room Management: Create or join chat rooms.
+- Real-time Message: Bidirectional messaging using STOMP over WebSocket.
+- Message Persistence: Store and load chat history from MySQL.
+- Read Receipts: Messages show a blue indicator when delivered. Recipients click a message to
+  mark it as read, turning the indicator green so senders see it's been seen in real time.
+- Minimal Frontend Client: HTML/JavaScript demo using SockJS & STOMP.js.
 
-## Setup Instruction (Docker Only)
+## 🧰 Tech Stack
 
-### Prerequisites
+- Backend: Java 17, Spring Boot
+- Security: Spring Security, JWT
+- Real-time: Spring WebSocket, STOMP
+- Persistence: Spring Data JPA, MYSQL
+- Containerization: Docker, Docker Compose
+- Frontend (Demo):HTML, JavaScript (SockJS & STOMP.js)
 
-- `url-shortener-app.tar` (your Docker image)
-- `docker-compose.yml` file (for container orchestration)
-- Docker installed and running
+## 🐳 Docker Image
 
-### Load and Run
+You can use the pre-built Docker image directly from Docker Hub:
+
+🔗 [michellec07/spring-boot-real-time-chat-app](https://hub.docker.com/r/michellec07/spring-boot-real-time-chat-app)
+
+## ⚙️ Setup Instruction (Docker Only)
+
+### 📦 Prerequisites
+
+Ensure you have the following installed:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+Clone this repository to get the necessary files:
+
+- `docker-compose.yml` — defines the backend and MySQL containers  
+- `init.sql` — initializes the MySQL database with sample data
+
+### ▶️ Run the Application
 
 ```bash
-# 1. Load the Docker image
-docker load -i url-shortener-app.tar
+# Step 1: Pull the pre-built backend image from Docker Hub
+docker pull michellec07/spring-boot-real-time-chat-app:latest
 
-# 2. Start the application and Redis using docker-compose
-docker-compose up
+# Step 2: Start backend and MySQL containers
+docker-compose up -d
+```
+
+### 📺 Access the Application
+
+Visit [http://localhost:8080/client-chat.html](http://localhost:8080/client-chat.html) in your browser to access the Swagger UI for testing the API.
