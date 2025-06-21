@@ -1,0 +1,40 @@
+A simple, secure real-time chat application build with Spring Boot,
+WebSocket(STOMP), and MySQL. This project showcases real-time messaging,
+persistent chat history, read receipts, and chat room management.
+
+## Feature
+
+- User Registration & Login: JWT-based authentication with Spring Security.
+- Protected Endpoints: Secure REST and WebSocket channels so only authenticated users can participate.
+- Chat Room Management: Create or join chat rooms.
+- Real-time Message: Bidirectional messaging using STOMP over WebSocket.
+- Message Persistence: Store and load chat history from MySQL.
+- Read Receipts: Messages show a blue indicator when delivered. Recipients click a message to
+  mark it as read, turning the indicator green so senders see it's been seen in real time.
+- Minimal Frontend Client: HTML/JavaScript demo using SockJS & STOMP.js.
+
+## Tech Stack
+
+- Backend: Java 17, Spring Boot
+- Security: Spring Security, JWT
+- Real-time: Spring WebSocket, STOMP
+- Persistence: Spring Data JPA, MYSQL
+- Containerization: Docker, Docker Compose
+- Frontend (Demo):HTML, JavaScript (SockJS & STOMP.js)
+
+## Setup Instruction (Docker Only)
+
+### Prerequisites
+
+- Docker & Docker Compose installed and running
+- `chatapp-backend-image.tar` (your pre-built Docker image)
+- `docker-compose.yml` file (defines MySQL + your app for container orchestration)
+
+### Load and Run
+
+```bash
+# 1. Load the pre-built app image
+docker load -i chatapp-backend-image.tar
+
+# 2. Launch MySQL and your app
+docker-compose up -d
