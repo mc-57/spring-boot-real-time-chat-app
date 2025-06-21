@@ -1,40 +1,39 @@
-A simple, secure real-time chat application build with Spring Boot,
-WebSocket(STOMP), and MySQL. This project showcases real-time messaging,
-persistent chat history, read receipts, and chat room management.
+A backend URL shortening service built with Spring Boot. 
+Converts long URLs into short, manageable links and redirects users seamlessly. 
+Includes expiration handling and Redis caching for high performance.
 
 ## Feature
 
-- User Registration & Login: JWT-based authentication with Spring Security.
-- Protected Endpoints: Secure REST and WebSocket channels so only authenticated users can participate.
-- Chat Room Management: Create or join chat rooms.
-- Real-time Message: Bidirectional messaging using STOMP over WebSocket.
-- Message Persistence: Store and load chat history from MySQL.
-- Read Receipts: Messages show a blue indicator when delivered. Recipients click a message to
-  mark it as read, turning the indicator green so senders see it's been seen in real time.
-- Minimal Frontend Client: HTML/JavaScript demo using SockJS & STOMP.js.
+- Shortens any valid URL
+- Optional expiration time for each shortened URL
+- Fast retrieval using Redis caching
+- Redirects from short URL to original URL
+- API testing enabled via Swagger UI
+- Docker support for containerized deployment
 
 ## Tech Stack
-
-- Backend: Java 17, Spring Boot
-- Security: Spring Security, JWT
-- Real-time: Spring WebSocket, STOMP
-- Persistence: Spring Data JPA, MYSQL
-- Containerization: Docker, Docker Compose
-- Frontend (Demo):HTML, JavaScript (SockJS & STOMP.js)
+- Java 17
+- Spring Boot 3.4.3
+- Spring Web, JPA, Validation
+- MYSQL
+- Redis (caching layer)
+- springdoc-openapi (Swagger UI)
+- Docker
+- Junit & Mockito 
 
 ## Setup Instruction (Docker Only)
 
 ### Prerequisites
 
-- Docker & Docker Compose installed and running
-- `chatapp-backend-image.tar` (your pre-built Docker image)
-- `docker-compose.yml` file (defines MySQL + your app for container orchestration)
+- `url-shortener-app.tar` (your Docker image)
+- `docker-compose.yml` file (for container orchestration)
+- Docker installed and running
 
 ### Load and Run
 
 ```bash
-# 1. Load the pre-built app image
-docker load -i chatapp-backend-image.tar
+# 1. Load the Docker image
+docker load -i url-shortener-app.tar
 
-# 2. Launch MySQL and your app
-docker-compose up -d
+# 2. Start the application and Redis using docker-compose
+docker-compose up
